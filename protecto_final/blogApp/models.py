@@ -1,8 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
 
-# Create your models here.
-
 
 class Autor(models.Model):
     class Meta:
@@ -13,7 +11,7 @@ class Autor(models.Model):
     profesion = models.CharField(max_length=40)
 
     def __str__(self):
-        return self.nombre, self.apellido
+        return self.nombre
 
 
 class Articulo(models.Model):
@@ -23,6 +21,9 @@ class Articulo(models.Model):
     titulo = models.CharField(max_length=40)
     texto = models.CharField(max_length=1000)
     fecha = models.DateField(null=True)
+    
+    def __str__(self):
+        return self.titulo
 
 
 class Seccion(models.Model):
@@ -30,3 +31,6 @@ class Seccion(models.Model):
         verbose_name_plural = "Secciones"
 
     nombre = models.CharField(max_length=40)
+    
+    def __str__(self):
+        return self.nombre
