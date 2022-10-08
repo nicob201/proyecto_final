@@ -7,9 +7,9 @@
 
 ## La aplicación cuenta con 4 paginas, __"Inicio"__, __"Autor"__, __"Sección"__ y __"Articulo"__
 
-    * Las paginas de "Autor", "Sección" y "Articulo" cuentan con formularios para generar cada una de estas opciones del Blog.
+Las paginas de "Autor", "Sección" y "Articulo" cuentan con formularios para generar cada una de estas opciones del Blog.
     
-    * Una vez que se completan los datos y se da clic en la opción de guardar, la aplicación almacena la información en la base de datos.
+Una vez que se completan los datos y se da clic en la opción de guardar, la aplicación almacena la información en la base de datos.
 
 
 ## Para realizar búsquedas en el blog:
