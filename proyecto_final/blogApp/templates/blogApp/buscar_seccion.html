@@ -1,0 +1,15 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<body style="background-color: lightblue;">
+    <h2>Buscar Seccion</h2>
+    <form action="/blogApp/resultado_busqueda_seccion" method="GET">
+        <p><input type="text" name="nombre" id="nombre"></p>
+        <input type="submit" value="Buscar Seccion">
+    </form>
+</body>
+
+{% endblock %}

@@ -11376,6 +11376,7 @@ header.masthead h1, header.masthead .h1 {
 }
 
 footer.footer {
+  margin-bottom: 0;
   padding-top: 4rem;
   padding-bottom: 4rem;
 }

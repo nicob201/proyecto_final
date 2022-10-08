@@ -1,13 +1,18 @@
-<!DOCTYPE html>
-<html lang="en">
+{% extends "blogApp/padre.html" %}
 
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<html lang="en">
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<title>Formulario Articulo</title>
 </head>
-<body style="background-color: green;">
+<body style="background-color: lightgreen;">
+    <h1>Formulario creacion Articulo</h1>
     <form action="/blogApp/fomulario_articulo/" method="POST">{% csrf_token %}
         <p>Titulo: <input type="text" name="titulo"> </p>
         <p>Texto: <input type="text" name="texto"> </p>
@@ -16,3 +21,5 @@
     </form>
 </body>
 </html>
+
+{% endblock %}

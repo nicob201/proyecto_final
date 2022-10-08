@@ -1,0 +1,21 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<body style="background-color: lightblue;">
+    <p>Seccion "{{ nombre }}" no encontrada</p>
+
+    {% if seccion_encontrada %}
+    
+    <ul>
+    {% for nombre_encontrado in seccion_encontrada %}
+        <li>{{nombre_encontrado.nombre}} (nombre {{nombre_encontrado.nombre}})</li>
+    {% endfor %}
+    </ul>
+    
+    {% endif %}
+</body>
+
+{% endblock %}

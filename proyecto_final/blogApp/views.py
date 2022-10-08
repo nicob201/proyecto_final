@@ -42,14 +42,64 @@ def formulario_seccion(request):
     return render(request, "blogApp/inicio.html")
 
 
-def busqueda_autor(request):
+def buscar_seccion(request):
+    return render(request, "blogApp/buscar_seccion.html")
+
+
+def resultado_busqueda_seccion(request):
 
     if not request.GET["nombre"]:
-        return HttpResponse("No enviaste datos")
+         return HttpResponse("No enviaste datos")
     else:
         nombre_a_buscar = request.GET["nombre"]
-        autores = Autor.objects.filter(nombre=nombre_a_buscar)
+        nombre_encontrado = Seccion.objects.filter(nombre=nombre_a_buscar)
 
-        contexto = {"nombre": nombre_a_buscar, "autores_encontrados": autores}
 
-        return render(request, "blogApp/resultado_busqueda.html", contexto)
+        contexto = {
+            "nombre": nombre_a_buscar,
+            "seccion_encontrada": nombre_encontrado
+        }
+        
+        return render(request, "blogApp/resultado_busqueda_seccion.html", contexto)
+    
+
+def buscar_autor(request):
+    return render(request, "blogApp/buscar_autor.html")
+
+
+def resultado_busqueda_autor(request):
+
+    if not request.GET["nombre"]:
+         return HttpResponse("No enviaste datos")
+    else:
+        autor_a_buscar = request.GET["nombre"]
+        nombre_autor_encontrado = Autor.objects.filter(nombre=autor_a_buscar)
+
+
+        contexto = {
+            "nombre": autor_a_buscar,
+            "autor_encontrado": nombre_autor_encontrado
+        }
+        
+        return render(request, "blogApp/resultado_busqueda_autor.html", contexto)
+    
+    
+def buscar_articulo(request):
+    return render(request, "blogApp/buscar_articulo.html")
+
+
+def resultado_busqueda_articulo(request):
+
+    if not request.GET["titulo"]:
+         return HttpResponse("No enviaste datos")
+    else:
+        articulo_a_buscar = request.GET["titulo"]
+        titulo_articulo_encontrado = Articulo.objects.filter(titulo=articulo_a_buscar)
+
+
+        contexto = {
+            "titulo": articulo_a_buscar,
+            "articulo_encontrado": titulo_articulo_encontrado
+        }
+        
+        return render(request, "blogApp/resultado_busqueda_articulo.html", contexto)

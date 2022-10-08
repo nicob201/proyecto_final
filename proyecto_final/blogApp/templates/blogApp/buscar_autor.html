@@ -1,0 +1,15 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<body style="background-color: lightsalmon;">
+    <h2>Buscar Autor</h2>
+    <form action="/blogApp/resultado_busqueda_autor" method="GET">
+        <p><input type="text" name="nombre" id="nombre"></p>
+        <input type="submit" value="Buscar Autor">
+    </form>
+</body>
+
+{% endblock %}

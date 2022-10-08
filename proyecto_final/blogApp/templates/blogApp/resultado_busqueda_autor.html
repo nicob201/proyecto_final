@@ -1,0 +1,21 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<body style="background-color: lightsalmon;">
+    <p>Autor "{{ nombre }}" no encontrado</p>
+
+    {% if autor_encontrado %}
+
+    <ul>
+    {% for nombre_encontrado in autor_encontrado %}
+        <li>{{nombre_encontrado.nombre}} (nombre {{nombre_encontrado.nombre}})</li>
+    {% endfor %}
+    </ul>
+
+    {% endif %}
+</body>
+
+{% endblock %}
