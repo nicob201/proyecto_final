@@ -10,8 +10,10 @@
     {% if articulo_encontrado %}
 
     <ul>
-    {% for titulo_articulo_encontrado in articulo_encontrado %}
-        <li>{{titulo_articulo_encontrado.titulo}} (titulo {{titulo_articulo_encontrado.titulo}})</li>
+    {% for info_articulo_encontrado in articulo_encontrado %}
+        <li>Titulo: {{info_articulo_encontrado.titulo}} (titulo {{info_articulo_encontrado.titulo}})</li>
+        <li>Texto: {{info_articulo_encontrado.texto}}</li>
+        <li>Fecha Publicación: {{info_articulo_encontrado.fecha}}</li>
     {% endfor %}
     </ul>
 

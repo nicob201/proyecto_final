@@ -10,8 +10,10 @@
     {% if autor_encontrado %}
 
     <ul>
-    {% for nombre_encontrado in autor_encontrado %}
-        <li>{{nombre_encontrado.nombre}} (nombre {{nombre_encontrado.nombre}})</li>
+    {% for info_encontrada in autor_encontrado %}
+        <li>Nombre: {{info_encontrada.nombre}}</li>
+        <li>Alias: {{info_encontrada.alias}}</li>
+        <li>Profesion: {{info_encontrada.profesion}}</li>
     {% endfor %}
     </ul>
 
