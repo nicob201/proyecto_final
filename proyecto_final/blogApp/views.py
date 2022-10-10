@@ -2,7 +2,7 @@ from django.shortcuts import render
 from django.http import HttpResponse
 from blogApp.models import Autor, Articulo, Seccion
 
-
+# PAGINA DE INICIO DEL BLOG
 def inicio(request):
     return render(request, "blogApp/inicio.html")
 

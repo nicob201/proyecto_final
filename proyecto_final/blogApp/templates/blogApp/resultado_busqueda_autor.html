@@ -5,17 +5,22 @@
 {% block contenidoQueCambia %}
 
 <body style="background-color: lightsalmon;">
-    <p>Autor "{{ nombre }}" no encontrado</p>
+    
 
     {% if autor_encontrado %}
 
     <ul>
     {% for info_encontrada in autor_encontrado %}
+        <h3>Autor encontrado</h3>
         <li>Nombre: {{info_encontrada.nombre}}</li>
         <li>Alias: {{info_encontrada.alias}}</li>
         <li>Profesion: {{info_encontrada.profesion}}</li>
     {% endfor %}
     </ul>
+
+    {% else %}
+
+    <h2>Autor "{{ nombre }}" no encontrado</h2>
 
     {% endif %}
 </body>
