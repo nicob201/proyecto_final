@@ -24,3 +24,7 @@ Una vez que se completan los datos y se da clic en la opción de guardar, la apl
         Se debe colocar la url: http://127.0.0.1:8000/blogApp/buscar_seccion/ la cual nos lleva a un formulario donde se puede ingresar el Nombre de una sección del blog para buscarla, por ejemplo "Deportes" y nos devolverá el nombre. Si se ingresa una sección inexistente devuelve la frase "Seccion no encontrada".
 
 ## El formato de las distintas páginas se heredan de __padre.html__, el cual fija la navbar y el footer.
+
+## INTEGRANTES DEL GRUPO:
+### - Benini Nicolás
+### - Boscasso Nicolás
