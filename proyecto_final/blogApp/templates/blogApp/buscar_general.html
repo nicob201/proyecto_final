@@ -1,0 +1,20 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h2>¿Que queres buscar?</h2>
+<form action="/blogApp/buscar_articulo" method="GET">
+    <input type="submit" value="Buscar Articulo">
+</form>
+<br><br>
+<form action="/blogApp/buscar_seccion" method="GET">
+    <input type="submit" value="Buscar Seccion">
+</form>
+<br><br>
+<form action="/blogApp/buscar_autor" method="GET">
+    <input type="submit" value="Buscar Autor">
+</form>
+
+{% endblock %}

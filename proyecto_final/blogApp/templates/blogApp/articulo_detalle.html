@@ -1,0 +1,11 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<p>Nombre del articulo: <strong>{{ articulo.titulo }}</strong></p>
+<p>texto: <i> {{ articulo.texto }}</i></p>
+<p>fecha: <i> {{ articulo.fecha }}</i></p>
+
+{% endblock %}

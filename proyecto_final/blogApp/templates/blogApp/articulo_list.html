@@ -1,0 +1,23 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Listado Articulos</h1>
+<ul>
+    {% for articulo in object_list %}
+    
+    <li>
+        <p>Nombre: {{ articulo.titulo }}</p>
+        <p>
+            <a href="{% url 'ArticuloDetalle' articulo.id %}">Ver articulo</a>
+            <a href="{% url 'ArticuloUpdate' articulo.id %}">Editar</a>
+            <a href="{% url 'ArticuloDelete' articulo.id %}">Borrar</a>
+        </p>
+        
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -1,0 +1,12 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+<form action="" method="POST">
+    {% csrf_token %}
+    Estás seguro de que querés borrar el articulo: <strong>{{ object }}</strong>?
+    <br><br>
+    <input type="submit" value="Borrar">
+</form>
+{% endblock %}
