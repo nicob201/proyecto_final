@@ -155,7 +155,6 @@ class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
 
 
 class ArticuloDelete(DeleteView, LoginRequiredMixin):
-
     model = Articulo
     success_url = "/blogApp/articulo_list"
 
