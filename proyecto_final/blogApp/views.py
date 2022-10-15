@@ -9,7 +9,6 @@ from django.contrib.auth.decorators import login_required
 from django.views.generic import (
     ListView,
     DetailView,
-    CreateView,
     UpdateView,
     DeleteView,
 )
@@ -17,6 +16,7 @@ from django.views.generic import (
 # PAGINA DE INICIO DEL BLOG
 def inicio(request):
     return render(request, "blogApp/inicio.html")
+
 
 ##########################################################
 # FORMULARIOS DE INGRESO DE DATOS
@@ -58,7 +58,6 @@ def formulario_seccion(request):
     seccion = Seccion(nombre=request.POST["nombre"])
     seccion.save()
     return render(request, "blogApp/inicio.html")
-
 
 
 ##########################################################
@@ -124,6 +123,7 @@ def resultado_busqueda_articulo(request):
 
         return render(request, "blogApp/resultado_busqueda_articulo.html", contexto)
 
+
 ##########################################################
 # LOGIN Y LOGOUT
 ##########################################################
@@ -133,7 +133,6 @@ class MyLogin(LoginView):
 
 class MyLogout(LogoutView, LoginRequiredMixin):
     template_name = "blogApp/logout.html"
-    
 
 
 ##########################################################
@@ -149,12 +148,6 @@ class ArticuloDetalle(DetailView, LoginRequiredMixin):
     template_name = "blogApp/articulo_detalle.html"
 
 
-class ArticuloCreacion(CreateView, LoginRequiredMixin):
-    model = Articulo
-    fields = ["titulo", "texto", "fecha"]
-    success_url = "/blogApp/Articulo/list"
-
-
 class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
     model = Articulo
     success_url = "/blogApp/articulo_list"
@@ -165,9 +158,10 @@ class ArticuloDelete(DeleteView, LoginRequiredMixin):
 
     model = Articulo
     success_url = "/blogApp/articulo_list"
-    
-    
-    
-    
+
+
+##########################################################
+# BUSQUEDA GENERAL
+##########################################################
 def formulario_buscar(request):
     return render(request, "blogApp/buscar_general.html")
