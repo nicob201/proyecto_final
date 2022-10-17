@@ -131,30 +131,30 @@ class MyLogin(LoginView):
     template_name = "blogApp/login.html"
 
 
-class MyLogout(LogoutView, LoginRequiredMixin):
+class MyLogout(LoginRequiredMixin, LogoutView):
     template_name = "blogApp/logout.html"
 
 
 ##########################################################
-# EDITAR - BORAR - ACTUALIZAR
+# ARTICULOS - EDITAR - BORAR - ACTUALIZAR
 ##########################################################
-class ArticuloList(ListView, LoginRequiredMixin):
+class ArticuloList(LoginRequiredMixin, ListView):
     model = Articulo
     template_name = "blogApp/articulo_list.html"
 
 
-class ArticuloDetalle(DetailView, LoginRequiredMixin):
+class ArticuloDetalle(LoginRequiredMixin, DetailView):
     model = Articulo
     template_name = "blogApp/articulo_detalle.html"
 
 
-class ArticuloUpdateView(UpdateView, LoginRequiredMixin):
+class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
     model = Articulo
     success_url = "/blogApp/articulo_list"
     fields = ["titulo", "texto"]
 
 
-class ArticuloDelete(DeleteView, LoginRequiredMixin):
+class ArticuloDelete(LoginRequiredMixin, DeleteView):
     model = Articulo
     success_url = "/blogApp/articulo_list"
 
