@@ -142,7 +142,7 @@ class MyLogin(LoginView):
 
 class MyLogout(LoginRequiredMixin, LogoutView):
     template_name = "blogApp/logout.html"
-    
+
 
 ##########################################################
 # BUSQUEDA GENERAL
@@ -174,8 +174,8 @@ class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
 class ArticuloDelete(LoginRequiredMixin, DeleteView):
     model = Articulo
     success_url = "/blogApp/articulo_list"
-    
-    
+
+
 ##########################################################
 # AUTOR - EDITAR - BORAR - ACTUALIZAR
 ##########################################################
