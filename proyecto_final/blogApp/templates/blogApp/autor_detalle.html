@@ -1,0 +1,11 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<p>Nombre del autor: <strong>{{ autor.nombre }}</strong></p>
+<p>Alias: <i>{{ autor.alias }}</i></p>
+<p>Profesión: <i>{{ autor.profesion }}</i></p>
+
+{% endblock %}

@@ -23,6 +23,7 @@ def inicio(request):
 ##########################################################
 
 # CREACION DE UN NUEVO AUTOR
+@login_required
 def formulario_autor(request):
     if request.method != "POST":
         return render(request, "blogApp/formulario_autor.html")
@@ -37,6 +38,7 @@ def formulario_autor(request):
 
 
 # CREACION DE UN NUEVO ARTICULO
+@login_required
 def formulario_articulo(request):
     if request.method != "POST":
         return render(request, "blogApp/formulario_articulo.html")
@@ -51,6 +53,7 @@ def formulario_articulo(request):
 
 
 # CREACION DE UNA NUEVA SECCION
+@login_required
 def formulario_seccion(request):
     if request.method != "POST":
         return render(request, "blogApp/formulario_seccion.html")
@@ -65,10 +68,12 @@ def formulario_seccion(request):
 ##########################################################
 
 # BUSQUEDA EN SECCIONES
+@login_required
 def buscar_seccion(request):
     return render(request, "blogApp/buscar_seccion.html")
 
 
+@login_required
 def resultado_busqueda_seccion(request):
 
     if not request.GET["nombre"]:
@@ -83,10 +88,12 @@ def resultado_busqueda_seccion(request):
 
 
 # BUSQUEDA EN AUTORES
+@login_required
 def buscar_autor(request):
     return render(request, "blogApp/buscar_autor.html")
 
 
+@login_required
 def resultado_busqueda_autor(request):
 
     if not request.GET["nombre"]:
@@ -104,10 +111,12 @@ def resultado_busqueda_autor(request):
 
 
 # BUSQUEDA EN ARTICULOS
+@login_required
 def buscar_articulo(request):
     return render(request, "blogApp/buscar_articulo.html")
 
 
+@login_required
 def resultado_busqueda_articulo(request):
 
     if not request.GET["titulo"]:
@@ -133,6 +142,14 @@ class MyLogin(LoginView):
 
 class MyLogout(LoginRequiredMixin, LogoutView):
     template_name = "blogApp/logout.html"
+    
+
+##########################################################
+# BUSQUEDA GENERAL
+##########################################################
+@login_required
+def formulario_buscar(request):
+    return render(request, "blogApp/buscar_general.html")
 
 
 ##########################################################
@@ -157,10 +174,27 @@ class ArticuloUpdateView(LoginRequiredMixin, UpdateView):
 class ArticuloDelete(LoginRequiredMixin, DeleteView):
     model = Articulo
     success_url = "/blogApp/articulo_list"
+    
+    
+##########################################################
+# AUTOR - EDITAR - BORAR - ACTUALIZAR
+##########################################################
+class AutorList(LoginRequiredMixin, ListView):
+    model = Autor
+    template_name = "blogApp/autor_list.html"
 
 
-##########################################################
-# BUSQUEDA GENERAL
-##########################################################
-def formulario_buscar(request):
-    return render(request, "blogApp/buscar_general.html")
+class AutorDetalle(LoginRequiredMixin, DetailView):
+    model = Autor
+    template_name = "blogApp/autor_detalle.html"
+
+
+class AutorUpdateView(LoginRequiredMixin, UpdateView):
+    model = Autor
+    success_url = "/blogApp/autor_list"
+    fields = ["nombre", "alias", "profesion"]
+
+
+class AutorDelete(LoginRequiredMixin, DeleteView):
+    model = Autor
+    success_url = "/blogApp/autor_list"

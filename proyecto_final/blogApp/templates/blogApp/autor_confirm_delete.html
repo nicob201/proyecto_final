@@ -1,0 +1,12 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+<form action="" method="POST">
+    {% csrf_token %}
+    Estás seguro que querés borrar el autor: <strong>{{ object }}</strong>?
+    <br><br>
+    <input type="submit" value="Borrar">
+</form>
+{% endblock %}

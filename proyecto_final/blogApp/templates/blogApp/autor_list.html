@@ -1,0 +1,23 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Listado Autores</h1>
+<ul>
+    {% for autor in object_list %}
+    
+    <li>
+        <p>Nombre: {{ autor.nombre }}</p>
+        <p>
+            <a href="{% url 'AutorDetalle' autor.id %}">Ver autor</a>
+            <a href="{% url 'AutorUpdate' autor.id %}">Editar</a>
+            <a href="{% url 'AutorDelete' autor.id %}">Borrar</a>
+        </p>
+        
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}
