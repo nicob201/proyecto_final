@@ -17,9 +17,9 @@
         <nav class="navbar navbar-light bg-light static-top">
             <div class="container">
                 <a class="navbar-brand" href="{% url 'inicio' %}">Inicio</a>
-                <a class="navbar-brand" href="{% url 'formulario_autor' %}">Autor</a>
+                <a class="navbar-brand" href="{% url 'AutorList' %}">Autor</a>
                 <a class="navbar-brand" href="{% url 'formulario_seccion' %}">Seccion</a>
-                <a class="navbar-brand" href="{% url 'formulario_articulo' %}">Articulo</a>
+                <a class="navbar-brand" href="{% url 'ArticuloList' %}">Articulo</a>
                 <a class="navbar-brand" href="{% url 'formulario_buscar' %}">Buscar</a>
                 {% if not request.user.is_authenticated %}
                     <a href="{% url 'Login' %}">Login</a>

@@ -5,6 +5,13 @@
 {% block contenidoQueCambia %}
 
 <h1>Listado Articulos</h1>
+<form action="/blogApp/formulario_articulo" method="GET">
+    <input type="submit" value="Crear Articulo">
+</form>
+<br>
+<form action="/blogApp/buscar_articulo" method="GET">
+    <input type="submit" value="Buscar Articulo">
+</form>
 <ul>
     {% for articulo in object_list %}
     

@@ -5,6 +5,13 @@
 {% block contenidoQueCambia %}
 
 <h1>Listado Autores</h1>
+<form action="/blogApp/formulario_autor" method="GET">
+    <input type="submit" value="Crear Autor">
+</form>
+<br>
+<form action="/blogApp/buscar_autor" method="GET">
+    <input type="submit" value="Buscar Autor">
+</form>
 <ul>
     {% for autor in object_list %}
     
