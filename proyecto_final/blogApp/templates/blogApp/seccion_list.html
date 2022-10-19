@@ -1,0 +1,30 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h1>Listado Secciones</h1>
+<form action="/blogApp/formulario_seccion" method="GET">
+    <input type="submit" value="Crear Seccion">
+</form>
+<br>
+<form action="/blogApp/buscar_seccion" method="GET">
+    <input type="submit" value="Buscar Seccion">
+</form>
+<ul>
+    {% for seccion in object_list %}
+    
+    <li>
+        <p>Nombre: {{ seccion.nombre }}</p>
+        <p>
+            <a href="{% url 'SeccionDetalle' seccion.id %}">Ver seccion</a>
+            <a href="{% url 'SeccionUpdate' seccion.id %}">Editar</a>
+            <a href="{% url 'SeccionDelete' seccion.id %}">Borrar</a>
+        </p>
+        
+    </li>
+    {% endfor %}
+</ul>
+
+{% endblock %}

@@ -23,6 +23,10 @@ from blogApp.views import (
     AutorDetalle,
     AutorUpdateView,
     AutorDelete,
+    SeccionList,
+    SeccionDetalle,
+    SeccionUpdateView,
+    SeccionDelete,
 )
 
 urlpatterns = [
@@ -49,14 +53,22 @@ urlpatterns = [
         name="resultado_busqueda_articulo",
     ),
     path("formulario_buscar", formulario_buscar, name="formulario_buscar"),
+    
     path("login/", MyLogin.as_view(), name="Login"),
     path("logout/", MyLogout.as_view(), name="Logout"),
+    
     path("articulo_list", ArticuloList.as_view(), name="ArticuloList"),
     path("r'(?P<pk>\d+)^$'", ArticuloDetalle.as_view(), name="ArticuloDetalle"),
     path("editar/<pk>", ArticuloUpdateView.as_view(), name="ArticuloUpdate"),
     path("borrar/<pk>", ArticuloDelete.as_view(), name="ArticuloDelete"),
+    
     path("autor_list", AutorList.as_view(), name="AutorList"),
     path("ver_autor/<pk>", AutorDetalle.as_view(), name="AutorDetalle"),
     path("editar_autor/<pk>", AutorUpdateView.as_view(), name="AutorUpdate"),
     path("borrar_autor/<pk>", AutorDelete.as_view(), name="AutorDelete"),
+    
+    path("seccion_list", SeccionList.as_view(), name="SeccionList"),
+    path("ver_seccion/<pk>", SeccionDetalle.as_view(), name="SeccionDetalle"),
+    path("editar_seccion/<pk>", SeccionUpdateView.as_view(), name="SeccionUpdate"),
+    path("borrar_seccion/<pk>", SeccionDelete.as_view(), name="SeccionDelete"),
 ]

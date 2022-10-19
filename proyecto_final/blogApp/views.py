@@ -198,3 +198,27 @@ class AutorUpdateView(LoginRequiredMixin, UpdateView):
 class AutorDelete(LoginRequiredMixin, DeleteView):
     model = Autor
     success_url = "/blogApp/autor_list"
+    
+
+##########################################################
+# SECCION - EDITAR - BORAR - ACTUALIZAR
+##########################################################
+class SeccionList(LoginRequiredMixin, ListView):
+    model = Seccion
+    template_name = "blogApp/seccion_list.html"
+
+
+class SeccionDetalle(LoginRequiredMixin, DetailView):
+    model = Seccion
+    template_name = "blogApp/seccion_detalle.html"
+
+
+class SeccionUpdateView(LoginRequiredMixin, UpdateView):
+    model = Seccion
+    success_url = "/blogApp/seccion_list"
+    fields = ["nombre"]
+
+
+class SeccionDelete(LoginRequiredMixin, DeleteView):
+    model = Seccion
+    success_url = "/blogApp/seccion_list"
