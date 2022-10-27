@@ -1,0 +1,25 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<html lang="en">
+<head>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Formulario Mensaje</title>
+</head>
+<body style="background-color: lightgreen;">
+    <h1>Formulario creacion Mensaje</h1>
+    <form action="/mensajeria/formulario_mensaje/" method="POST">{% csrf_token %}
+        <p>Destinatario: <input type="menu" name="destinatario"> </p>
+        <p>Mensaje: <input type="text" name="mensaje_escrito"> </p>
+        <p>Fecha: <input type="date" name="fecha"> </p>
+        <input type="submit" value="Enviar Mensaje">
+    </form>
+</body>
+</html>
+
+{% endblock %}

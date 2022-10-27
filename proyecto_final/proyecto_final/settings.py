@@ -38,6 +38,7 @@ INSTALLED_APPS = [
     "django.contrib.messages",
     "django.contrib.staticfiles",
     "blogApp",
+    "mensajeria",
 ]
 
 MIDDLEWARE = [
@@ -125,3 +126,4 @@ DEFAULT_AUTO_FIELD = "django.db.models.BigAutoField"
 
 LOGIN_REDIRECT_URL = "/blogApp/inicio"
 LOGIN_URL = "/blogApp/login/"
+LOGIN_URL = "/mensajeria/login/"

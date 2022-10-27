@@ -1,9 +1,20 @@
 {% extends "blogApp/padre.html" %}
+
 {% block contenidoQueCambia %}
-<form action="" method="POST">
-    {% csrf_token %}
-    {{ form.as_p }}
-    <br><br>
-    <button type="submit" name="submit">Login</button>
-</form>
+
+<div class="container p-4">
+    <div class="row justify-content-md-center">
+        <div class="col col-lg-2"></div>
+        <div class="col-md-auto">
+            <form action="" method="POST">
+                {% csrf_token %}
+                {{ form.as_p }}
+                <br><br>
+                <button type="submit" name="submit">Ingresar</button>
+            </form>
+        </div>
+        <div class="col col-lg-2"></div>
+    </div>
+</div>
+
 {% endblock %}

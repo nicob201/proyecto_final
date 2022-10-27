@@ -63,11 +63,11 @@ def formulario_seccion(request):
     return render(request, "blogApp/inicio.html")
 
 
-##########################################################
 # FORMULARIOS DE BUSQUEDA
-##########################################################
 
+##########################################################
 # BUSQUEDA EN SECCIONES
+##########################################################
 @login_required
 def buscar_seccion(request):
     return render(request, "blogApp/buscar_seccion.html")
@@ -87,7 +87,9 @@ def resultado_busqueda_seccion(request):
         return render(request, "blogApp/resultado_busqueda_seccion.html", contexto)
 
 
+##########################################################
 # BUSQUEDA EN AUTORES
+##########################################################
 @login_required
 def buscar_autor(request):
     return render(request, "blogApp/buscar_autor.html")
@@ -110,7 +112,9 @@ def resultado_busqueda_autor(request):
         return render(request, "blogApp/resultado_busqueda_autor.html", contexto)
 
 
+##########################################################
 # BUSQUEDA EN ARTICULOS
+##########################################################
 @login_required
 def buscar_articulo(request):
     return render(request, "blogApp/buscar_articulo.html")
@@ -222,3 +226,22 @@ class SeccionUpdateView(LoginRequiredMixin, UpdateView):
 class SeccionDelete(LoginRequiredMixin, DeleteView):
     model = Seccion
     success_url = "/blogApp/seccion_list"
+
+
+def register(request):
+    if request.method == "POST":
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            username_capturado = form.cleaned_data["username"]
+            form.save()
+
+            return render(
+                request,
+                "blogApp/inicio.html",
+                {"mensaje": f"Usuario: {username_capturado}"},
+            )
+
+    else:
+        form = UserCreationForm()
+
+    return render(request, "blogApp/registro.html", {"form": form})
