@@ -1,6 +1,8 @@
 from django.contrib import admin
 from django.urls import path, include
+from django.conf.urls.static import static
 from blogApp.views import *
+from django.conf import settings
 
 urlpatterns = [
     # PAGINA INICIO
@@ -41,5 +43,16 @@ urlpatterns = [
     path("editar_seccion/<pk>", SeccionUpdateView.as_view(), name="SeccionUpdate"),
     path("borrar_seccion/<pk>", SeccionDelete.as_view(), name="SeccionDelete"),
     
+    # REGISTRARSE
     path("registrarse/", register, name="Register"),
+    
+    # EDITAR PERFIL
+    path("editar_perfil/", editar_perfil, name="EditarPerfil"),
+    
+    # AVATAR DEL PERFIL
+    path("avatar/", agregar_avatar, name="AgregarAvatar"),
+    
+    # ACERCA DE
+    path("acercade/", acercade, name="AcercaDe"),
 ]
+

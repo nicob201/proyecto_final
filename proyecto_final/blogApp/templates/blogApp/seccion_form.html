@@ -3,9 +3,11 @@
 {% load static %}
 
 {% block contenidoQueCambia %}
+
 <form action="" method="POST">
     {% csrf_token %}
     {{ form.as_p }}
     <input type="submit" value="Confirmar Edición"/>
 </form>
+
 {% endblock %}

@@ -1,5 +1,6 @@
 from unittest.util import _MAX_LENGTH
 from django.db import models
+from django.contrib.auth.models import User
 
 ##########################################################
 # MODELS DEL BLOG
@@ -36,3 +37,8 @@ class Seccion(models.Model):
 
     def __str__(self):
         return self.nombre
+    
+    
+class Avatar(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    imagen = models.ImageField(upload_to="avatares", null=True, blank=True, default="")

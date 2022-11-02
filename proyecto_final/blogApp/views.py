@@ -3,6 +3,7 @@ from django.http import HttpResponse
 from blogApp.models import Autor, Articulo, Seccion
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
+from blogApp.forms import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -16,7 +17,6 @@ from django.views.generic import (
 # PAGINA DE INICIO DEL BLOG
 def inicio(request):
     return render(request, "blogApp/inicio.html")
-
 
 ##########################################################
 # FORMULARIOS DE INGRESO DE DATOS
@@ -228,20 +228,73 @@ class SeccionDelete(LoginRequiredMixin, DeleteView):
     success_url = "/blogApp/seccion_list"
 
 
+##########################################################
+# REGISTRARSE
+##########################################################
 def register(request):
     if request.method == "POST":
-        form = UserCreationForm(request.POST)
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            username_capturado = form.cleaned_data["username"]
             form.save()
 
             return render(
                 request,
                 "blogApp/inicio.html",
-                {"mensaje": f"Usuario: {username_capturado}"},
             )
 
     else:
-        form = UserCreationForm()
+        form = SignUpForm()
 
     return render(request, "blogApp/registro.html", {"form": form})
+
+
+##########################################################
+# EDITAR PERFIL
+##########################################################
+@login_required
+def editar_perfil(request):
+    user = request.user
+    
+    if request.method != "POST":
+        form = UserEditionForm(initial={"email": user.email})
+    else:
+        form = UserEditionForm(request.POST)
+        if form.is_valid():
+            data = form.cleaned_data
+            user.email = data["email"]
+            user.first_name = data["first_name"]
+            user.set_password(data["password1"])
+            user.save()
+            return render(request, "blogApp/inicio.html")
+
+    contexto = {
+        "user": user,
+        "form": form
+    }
+    return render(request, "blogApp/editarPerfil.html", contexto)
+
+
+##########################################################
+# AVATAR
+##########################################################
+@login_required
+def agregar_avatar(request):
+    if request.method != "POST":
+        form = AvatarForm()
+    else:
+        form = AvatarForm(request.POST, request.FILES)
+        if form.is_valid():
+            Avatar.objects.filter(user=request.user).delete()
+            form.save()
+            return render(request, "blogApp/inicio.html")
+
+    contexto = {"form": form}
+    return render(request, "blogApp/avatar.html", contexto)
+
+
+##########################################################
+# ACERCA DE
+##########################################################
+@login_required
+def acercade(request):
+    return render(request, "blogApp/acercade.html")

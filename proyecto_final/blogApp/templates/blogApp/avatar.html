@@ -1,0 +1,14 @@
+{% extends "blogApp/padre.html" %}
+
+{% load static %}
+
+{% block contenidoQueCambia %}
+
+<h4>Agregar un avatar desde el perfil: <i>{{ user }}</i></h4>
+<form action="" method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {{ form.as_p }}
+    <input type="submit" value="Aceptar"/>
+</form>
+
+{% endblock %}

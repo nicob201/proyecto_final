@@ -12,19 +12,23 @@
 <form action="/blogApp/buscar_articulo" method="GET">
     <input type="submit" value="Buscar Articulo">
 </form>
-<ul>
-    {% for articulo in object_list %}
-    
-    <li>
-        <p>Nombre: {{ articulo.titulo }}</p>
-        <p>
-            <a href="{% url 'ArticuloDetalle' articulo.id %}">Ver articulo</a>
-            <a href="{% url 'ArticuloUpdate' articulo.id %}">Editar</a>
-            <a href="{% url 'ArticuloDelete' articulo.id %}">Borrar</a>
-        </p>
-        
-    </li>
-    {% endfor %}
-</ul>
+
+{% if object_list %}
+    <ul>
+        {% for articulo in object_list %}
+            <li>
+                <p>Nombre: {{ articulo.titulo }}</p>
+                <p>
+                    <a href="{% url 'ArticuloDetalle' articulo.id %}">Ver articulo</a>
+                    <a href="{% url 'ArticuloUpdate' articulo.id %}">Editar</a>
+                    <a href="{% url 'ArticuloDelete' articulo.id %}">Borrar</a>
+                </p>
+                
+            </li>
+        {% endfor %}
+    </ul>
+{% else %}
+<h3>-No hay articulos creados-</h3>
+{% endif %}
 
 {% endblock %}

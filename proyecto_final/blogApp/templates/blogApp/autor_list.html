@@ -12,19 +12,24 @@
 <form action="/blogApp/buscar_autor" method="GET">
     <input type="submit" value="Buscar Autor">
 </form>
-<ul>
-    {% for autor in object_list %}
+
+{% if object_list %}
+    <ul>
+        {% for autor in object_list %}
     
-    <li>
-        <p>Nombre: {{ autor.nombre }}</p>
-        <p>
-            <a href="{% url 'AutorDetalle' autor.id %}">Ver autor</a>
-            <a href="{% url 'AutorUpdate' autor.id %}">Editar</a>
-            <a href="{% url 'AutorDelete' autor.id %}">Borrar</a>
-        </p>
-        
-    </li>
-    {% endfor %}
-</ul>
+            <li>
+                <p>Nombre: {{ autor.nombre }}</p>
+                <p>
+                    <a href="{% url 'AutorDetalle' autor.id %}">Ver autor</a>
+                    <a href="{% url 'AutorUpdate' autor.id %}">Editar</a>
+                    <a href="{% url 'AutorDelete' autor.id %}">Borrar</a>
+                </p>
+            </li>
+
+        {% endfor %}
+    </ul>
+{% else %}
+<h3>-No hay autores creados-</h3>
+{% endif %}
 
 {% endblock %}
