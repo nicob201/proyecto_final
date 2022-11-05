@@ -24,5 +24,4 @@ urlpatterns = [
     path("mensajeria/", include("mensajeria.urls")),
 ]
 
-# URL AVATARES
 urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

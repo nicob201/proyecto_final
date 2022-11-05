@@ -4,6 +4,7 @@ from blogApp.models import Autor, Articulo, Seccion
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from blogApp.forms import *
+from blogApp.models import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
@@ -14,9 +15,19 @@ from django.views.generic import (
     DeleteView,
 )
 
+
+
 # PAGINA DE INICIO DEL BLOG
+@login_required
 def inicio(request):
-    return render(request, "blogApp/inicio.html")
+    avatar = Avatar.objects.filter(user=request.user).first()
+    if avatar is not None:
+        contexto = {"avatar": avatar.imagen.url}
+    else:
+        contexto = {}
+
+    return render(request, "blogApp/inicio.html", contexto)
+
 
 ##########################################################
 # FORMULARIOS DE INGRESO DE DATOS
@@ -279,6 +290,7 @@ def editar_perfil(request):
 ##########################################################
 @login_required
 def agregar_avatar(request):
+    avatar = Avatar.objects.filter(user=request.user).first()
     if request.method != "POST":
         form = AvatarForm()
     else:
@@ -288,8 +300,11 @@ def agregar_avatar(request):
             form.save()
             return render(request, "blogApp/inicio.html")
 
-    contexto = {"form": form}
-    return render(request, "blogApp/avatar.html", contexto)
+    contexto = {
+                "form": form,
+                "avatar": avatar.imagen.url
+                }
+    return render(request, "blogApp/avatar_form.html", contexto)
 
 
 ##########################################################

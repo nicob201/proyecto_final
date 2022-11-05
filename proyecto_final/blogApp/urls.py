@@ -2,6 +2,7 @@ from django.contrib import admin
 from django.urls import path, include
 from django.conf.urls.static import static
 from blogApp.views import *
+from blogApp.views import agregar_avatar
 from django.conf import settings
 
 urlpatterns = [
@@ -49,10 +50,10 @@ urlpatterns = [
     # EDITAR PERFIL
     path("editar_perfil/", editar_perfil, name="EditarPerfil"),
     
-    # AVATAR DEL PERFIL
-    path("avatar/", agregar_avatar, name="AgregarAvatar"),
-    
     # ACERCA DE
     path("acercade/", acercade, name="AcercaDe"),
+    
+     # AVATAR
+    path("agregar-avatar/", agregar_avatar, name="AgregarAvatar"),
 ]
 

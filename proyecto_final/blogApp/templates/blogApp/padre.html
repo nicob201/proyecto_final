@@ -34,7 +34,7 @@
                 {% if request.user.is_authenticated %}
                     <a href="{% url 'Logout' %}">Salir</a>
                     <a href="{% url 'EditarPerfil' %}">Editar Perfil</a>
-                    <a href="{% url 'AgregarAvatar' %}">Avatar</a>
+                    <a href="{% url 'AgregarAvatar' %}">Agregar Avatar</a>
                     {% if avatar %}
                         <img height="40px" src="{{ avatar }}"/>
                     {% endif %}

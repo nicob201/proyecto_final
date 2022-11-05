@@ -19,6 +19,7 @@ from django.contrib.auth.views import LoginView, LogoutView
 def inicio_mensajeria(request):
     return render(request, "mensajeria/inicio_mensajeria.html")
 
+
 class MensajeList(LoginRequiredMixin, ListView):
     model = Mensaje
     template_name = "mensajeria/mensaje_list.html"
