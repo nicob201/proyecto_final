@@ -8,6 +8,7 @@ from blogApp.models import *
 from django.contrib.auth.views import LoginView, LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.decorators import login_required
+from django.views.decorators.csrf import csrf_exempt
 from django.views.generic import (
     ListView,
     DetailView,
@@ -242,6 +243,7 @@ class SeccionDelete(LoginRequiredMixin, DeleteView):
 ##########################################################
 # REGISTRARSE
 ##########################################################
+@csrf_exempt
 def register(request):
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -300,10 +302,7 @@ def agregar_avatar(request):
             form.save()
             return render(request, "blogApp/inicio.html")
 
-    contexto = {
-                "form": form,
-                "avatar": avatar.imagen.url
-                }
+    contexto = {"form": form}
     return render(request, "blogApp/avatar_form.html", contexto)
 
 
