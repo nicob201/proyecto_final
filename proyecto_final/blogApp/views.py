@@ -1,6 +1,5 @@
 from django.shortcuts import render
 from django.http import HttpResponse
-from blogApp.models import Autor, Articulo, Seccion
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from blogApp.forms import *
@@ -15,7 +14,6 @@ from django.views.generic import (
     UpdateView,
     DeleteView,
 )
-
 
 
 # PAGINA DE INICIO DEL BLOG
@@ -214,7 +212,7 @@ class AutorUpdateView(LoginRequiredMixin, UpdateView):
 class AutorDelete(LoginRequiredMixin, DeleteView):
     model = Autor
     success_url = "/blogApp/autor_list"
-    
+
 
 ##########################################################
 # SECCION - EDITAR - BORAR - ACTUALIZAR
@@ -267,7 +265,7 @@ def register(request):
 @login_required
 def editar_perfil(request):
     user = request.user
-    
+
     if request.method != "POST":
         form = UserEditionForm(initial={"email": user.email})
     else:
@@ -280,10 +278,7 @@ def editar_perfil(request):
             user.save()
             return render(request, "blogApp/inicio.html")
 
-    contexto = {
-        "user": user,
-        "form": form
-    }
+    contexto = {"user": user, "form": form}
     return render(request, "blogApp/editarPerfil.html", contexto)
 
 

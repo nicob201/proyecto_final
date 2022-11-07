@@ -37,7 +37,7 @@ class Seccion(models.Model):
 
     def __str__(self):
         return self.nombre
-    
+
 
 class Avatar(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)

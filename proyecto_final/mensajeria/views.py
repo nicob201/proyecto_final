@@ -14,7 +14,7 @@ from django.contrib.auth.decorators import login_required
 from django.contrib.auth import authenticate
 from django.contrib.auth.forms import AuthenticationForm, UserCreationForm
 from django.contrib.auth.views import LoginView, LogoutView
-# Create your views here.
+
 
 def inicio_mensajeria(request):
     return render(request, "mensajeria/inicio_mensajeria.html")
@@ -23,7 +23,7 @@ def inicio_mensajeria(request):
 class MensajeList(LoginRequiredMixin, ListView):
     model = Mensaje
     template_name = "mensajeria/mensaje_list.html"
-    
+
 
 @login_required
 def formulario_mensaje(request):

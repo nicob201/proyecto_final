@@ -7,7 +7,6 @@ from django.forms import ChoiceField
 
 
 class Mensaje(models.Model):
-    
     class Meta:
         verbose_name_plural = "Mensajes"
 

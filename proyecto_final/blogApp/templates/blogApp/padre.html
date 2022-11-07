@@ -13,7 +13,7 @@
         <link href="{% static 'blogApp/css/styles.css' %}" rel="stylesheet" />
     </head>
     <body>
-        <!-- Navigation-->
+        <!-- Navbar-->
         <nav class="navbar navbar-light bg-light static-top">
 
             <div class="container">
@@ -22,8 +22,8 @@
                 <a class="navbar-brand" href="{% url 'AutorList' %}">Autor</a>
                 <a class="navbar-brand" href="{% url 'SeccionList' %}">Seccion</a>
                 <a class="navbar-brand" href="{% url 'ArticuloList' %}">Articulo</a>
-                <a class="navbar-brand" href="{% url 'AcercaDe' %}">Acerca De</a>
                 <a class="navbar-brand" href="{% url 'MensajeList' %}">Escribir un mensaje</a>
+                <a class="navbar-brand" href="{% url 'AcercaDe' %}">Acerca De</a>
                 <a class="navbar-brand" href="{% url 'formulario_buscar' %}">Buscar</a>
                 
                 {% if not request.user.is_authenticated %}

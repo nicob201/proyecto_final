@@ -6,16 +6,16 @@ from blogApp.models import *
 
 class SignUpForm(UserCreationForm):
     first_name = forms.CharField(label="Nombre", max_length=140, required=True)
-    email = forms.EmailField(label="Email",required=True)
+    email = forms.EmailField(label="Email", required=True)
 
     class Meta:
         model = User
         fields = (
-            'username',
-            'first_name',
-            'email',
-            'password1',
-            'password2',
+            "username",
+            "first_name",
+            "email",
+            "password1",
+            "password2",
         )
 
 
